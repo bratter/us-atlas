@@ -1,7 +1,7 @@
 {
-  "name": "us-atlas",
-  "version": "3.0.0",
-  "description": "Pre-built TopoJSON from the U.S. Census Bureau.",
+  "name": "@d3ts/us-atlas",
+  "version": "0.1.0",
+  "description": "Pre-built TopoJSON from the U.S. Census Bureau, including Insular Areas.",
   "license": "ISC",
   "keywords": [
     "topojson",
@@ -9,12 +9,12 @@
     "shapefile"
   ],
   "author": {
-    "name": "Mike Bostock",
-    "url": "https://bost.ocks.org/mike"
+    "name": "Brendan Ratter",
+    "url": "https://github.com/bratter"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/topojson/us-atlas.git"
+    "url": "https://github.com/bratter/us-atlas.git"
   },
   "files": [
     "*-10m.json"
