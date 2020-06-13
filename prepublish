@@ -25,7 +25,8 @@ fi
 # Additionally, windows compatibility issues require rewriting the RegExp with a constructor to avoid conversion to filepath
 TMP_FILE='build/tmp.json'
 FILTER='!new RegExp("000$").test(d.properties.GEOID)'
-PROJECTION='d3.geoAlbersUsa().scale(1300).translate([487.5, 305])'
+PROJECTION="d3ts.usMapProjection((['02', '15', '72', '78', '66', '69', '60']))"
+REQUIRE='d3ts=@d3ts/us-map'
 
 # Counties
 shp2json -n build/cb_2019_us_county_5m.shp \
@@ -43,7 +44,7 @@ geo2topo -q 1e5 -n counties=$TMP_FILE \
 shp2json -n build/cb_2019_us_county_5m.shp \
   | ndjson-filter "$FILTER" \
   | ndjson-map '(d.id = d.properties.GEOID, delete d.properties, d)' \
-  | geoproject -n "$PROJECTION" \
+  | geoproject -n "$PROJECTION" -r $REQUIRE \
   > $TMP_FILE
 
 geo2topo -q 1e5 -n counties=$TMP_FILE \
@@ -67,7 +68,7 @@ geo2topo -q 1e5 -n states=$TMP_FILE \
 shp2json -n build/cb_2019_us_state_5m.shp \
   | ndjson-filter "$FILTER" \
   | ndjson-map '(d.id = d.properties.GEOID, d.properties = {name: d.properties.NAME}, d)' \
-  | geoproject -n "$PROJECTION" \
+  | geoproject -n "$PROJECTION" -r $REQUIRE \
   > $TMP_FILE
 
 geo2topo -q 1e5 -n states=$TMP_FILE \
@@ -88,7 +89,7 @@ geo2topo -q 1e5 -n nation=$TMP_FILE \
 shp2json -n build/cb_2019_us_nation_5m.shp \
   | ndjson-filter "$FILTER" \
   | ndjson-map '(d.id = d.properties.GEOID, d.properties = {name: d.properties.NAME}, d)' \
-  | geoproject -n "$PROJECTION" \
+  | geoproject -n "$PROJECTION" -r $REQUIRE \
   > $TMP_FILE
 
 geo2topo -q 1e5 -n nation=$TMP_FILE \
