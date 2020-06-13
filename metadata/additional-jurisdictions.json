@@ -1,0 +1,11 @@
+[
+  {"name":"American Samoa", "code":"AS", "abbrev":"A.S.", "type":"insular area"},
+  {"name":"Guam", "code":"GU", "abbrev":"Guam", "type":"insular area"},
+  {"name":"Northern Mariana Islands", "code":"MP", "abbrev":"Mariana Isl.", "type":"insular area"},
+  {"name":"Puerto Rico", "code":"PR", "abbrev":"Puerto Rico", "type":"insular area"},
+  {"name":"U.S. Virgin Islands", "code":"VI", "abbrev":"Virgin Isl.", "type":"insular area"},
+  {"name":"Federated States Of Micronesia", "code":"FM", "abbrev":"Micronesia", "type":"freely associated state"},
+  {"name":"Marshall Islands", "code":"MH", "abbrev":"Marshall Islands", "type":"freely associated state"},
+  {"name":"Palau", "code":"PW", "abbrev":"Palau", "type":"freely associated state"},
+  {"name":"U.S. Minor Outlying Islands", "code":"UM", "abbrev":"UM", "type":"insular areas"}
+]

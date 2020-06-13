@@ -1,21 +1,21 @@
-const shapefile = require("shapefile");
+const shapefile = require('shapefile');
 
 Promise.all([
   parseInput(),
-  shapefile.read("build/cb_2019_us_county_5m.shp"),
-  shapefile.read("build/cb_2019_us_state_5m.shp")
+  shapefile.read('build/cb_2019_us_county_5m.shp'),
+  shapefile.read('build/cb_2019_us_state_5m.shp')
 ]).then(output);
 
 function parseInput() {
   return new Promise((resolve, reject) => {
     const chunks = [];
     process.stdin
-        .on("data", chunk => chunks.push(chunk))
-        .on("end", () => {
-          try { resolve(JSON.parse(chunks.join(""))); }
+        .on('data', chunk => chunks.push(chunk))
+        .on('end', () => {
+          try { resolve(JSON.parse(chunks.join(''))); }
           catch (error) { reject(error); }
         })
-        .setEncoding("utf8");
+        .setEncoding('utf8');
   });
 }
 
@@ -33,5 +33,5 @@ function output([topology, counties, states]) {
     };
   }
   process.stdout.write(JSON.stringify(topology));
-  process.stdout.write("\n");
+  process.stdout.write('\n');
 }
