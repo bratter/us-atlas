@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@d3ts/us-map@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@d3ts/us-map/-/us-map-0.1.0.tgz#ddb394d5c8fcd79aeb2916783f66579dd1ba9131"
+"@d3ts/us-map@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@d3ts/us-map/-/us-map-0.2.0.tgz#dd708faaf5464248e5aef918ff1d4fed25c959f5"
   dependencies:
     d3-geo "^1.12.1"
 

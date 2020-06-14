@@ -33,6 +33,6 @@
     "topojson-simplify": "^3.0.0"
   },
   "dependencies": {
-    "@d3ts/us-map": "^0.1.0"
+    "@d3ts/us-map": "^0.2.0"
   }
 }

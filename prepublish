@@ -101,5 +101,8 @@ geo2topo -q 1e5 -n nation=$TMP_FILE \
   | toposimplify -f -p 0.25 \
   > nation-albers-10m.json
 
+# Inset outlines (projected only)
+node ./make-inset-outlines.js > outlines-albers-10m.json
+
 # Clean the created temporary file
 rm -rvf $TMP_FILE
