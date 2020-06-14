@@ -1,10 +1,9 @@
-const shapefile = require('shapefile');
-
-Promise.all([
-  parseInput(),
-  shapefile.read('build/cb_2019_us_county_5m.shp'),
-  shapefile.read('build/cb_2019_us_state_5m.shp')
-]).then(output);
+const meta = require('./state-metadata.json');
+const metaMap = new Map(meta.map(d => {
+  // Pull out id as there is no need to duplicate in the properties
+  const { id, ...rest } = d;
+  return [id, rest];
+}));
 
 function parseInput() {
   return new Promise((resolve, reject) => {
@@ -19,19 +18,4 @@ function parseInput() {
   });
 }
 
-function output([topology, counties, states]) {
-  counties = new Map(counties.features.map(d => [d.properties.GEOID, d.properties]));
-  states = new Map(states.features.map(d => [d.properties.GEOID, d.properties]));
-  for (const county of topology.objects.counties.geometries) {
-    county.properties = {
-      name: counties.get(county.id).NAME
-    };
-  }
-  for (const state of topology.objects.states.geometries) {
-    state.properties = {
-      name: states.get(state.id).NAME
-    };
-  }
-  process.stdout.write(JSON.stringify(topology));
-  process.stdout.write('\n');
-}
+module.exports = { metaMap, parseInput };

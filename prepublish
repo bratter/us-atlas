@@ -41,7 +41,7 @@ geo2topo -q 1e5 -n counties=$TMP_FILE \
   | toposimplify -f -s 1e-7 \
   | topomerge states=counties -k 'd.id.slice(0, 2)' \
   | topomerge nation=states \
-  | node ./properties.js \
+  | node ./properties-counties.js \
   > counties-10m.json
 
 shp2json -n build/cb_2019_us_county_5m.shp \
@@ -54,7 +54,7 @@ geo2topo -q 1e5 -n counties=$TMP_FILE \
   | toposimplify -f -p 0.25 \
   | topomerge states=counties -k 'd.id.slice(0, 2)' \
   | topomerge nation=states \
-  | node ./properties.js \
+  | node ./properties-counties.js \
   > counties-albers-10m.json
 
 # States
@@ -66,6 +66,7 @@ shp2json -n build/cb_2019_us_state_5m.shp \
 geo2topo -q 1e5 -n states=$TMP_FILE \
   | toposimplify -f -s 1e-7 \
   | topomerge nation=states \
+  | node ./properties-states.js \
   > states-10m.json
 
 shp2json -n build/cb_2019_us_state_5m.shp \
@@ -77,6 +78,7 @@ shp2json -n build/cb_2019_us_state_5m.shp \
 geo2topo -q 1e5 -n states=$TMP_FILE \
   | toposimplify -f -p 0.25 \
   | topomerge nation=states \
+  | node ./properties-states.js \
   > states-albers-10m.json
 
 # Nation
